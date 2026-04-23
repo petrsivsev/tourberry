@@ -15,9 +15,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 :root {
     --navy: #0e2240;
     --navy-mid: #1a3560;
-    --gold: #c8860a;
-    --gold-light: #e8a820;
-    --gold-btn: #d4900f;
+    --orange: #ff5500;
+    --orange-dark: #e04a00;
+    --teal: #3dc9bd;
+    --teal-dark: #2aada2;
+    /* legacy aliases so existing code keeps working */
+    --gold: #e04a00;
+    --gold-light: #3dc9bd;
+    --gold-btn: #ff5500;
     --off-white: #f8f6f2;
     --light: #f0eed9;
     --border: #ddd9d0;
@@ -53,14 +58,14 @@ h3 { font-size: clamp(1.1rem, 3vw, 1.5rem); }
     border: none;
     text-align: center;
 }
-.btn-primary { background: var(--gold-btn); color: #fff; }
-.btn-primary:hover { background: var(--gold); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(200,134,10,.4); }
+.btn-primary { background: var(--orange); color: #fff; }
+.btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(255,85,0,.4); }
 .btn-outline { border: 2px solid #fff; color: #fff; background: transparent; }
 .btn-outline:hover { background: rgba(255,255,255,.15); transform: translateY(-2px); }
 .btn-navy { background: var(--navy); color: #fff; }
 .btn-navy:hover { background: var(--navy-mid); transform: translateY(-2px); box-shadow: var(--shadow); }
-.btn-gold-outline { border: 2px solid var(--gold-btn); color: var(--gold-btn); background: transparent; }
-.btn-gold-outline:hover { background: var(--gold-btn); color: #fff; transform: translateY(-2px); }
+.btn-gold-outline { border: 2px solid var(--orange); color: var(--orange); background: transparent; }
+.btn-gold-outline:hover { background: var(--orange); color: #fff; transform: translateY(-2px); }
 
 /* ===== TOP BAR ===== */
 .top-bar {

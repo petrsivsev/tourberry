@@ -120,7 +120,7 @@
         .slide-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 2.5rem; color: #fff; }
         .slide-tag {
             display: inline-block;
-            background: var(--gold-btn);
+            background: var(--orange);
             color: #fff;
             font-size: .7rem;
             font-weight: 700;
@@ -247,13 +247,13 @@
             display: inline-flex;
             align-items: center;
             gap: .4rem;
-            color: var(--gold-btn);
+            color: var(--teal-dark);
             font-size: .84rem;
             font-weight: 600;
             border-bottom: 1px solid transparent;
             transition: border-color .2s;
         }
-        .why-cta a:hover { border-color: var(--gold-btn); }
+        .why-cta a:hover { border-color: var(--teal-dark); }
 
         /* ===== SOCIAL ===== */
         #social { background: var(--off-white); padding: 4rem 1.5rem; text-align: center; }
@@ -384,7 +384,7 @@
 <nav class="navbar">
     <div class="nav-inner">
         <a href="index.html" class="nav-logo">
-            <span class="star">✦</span>&nbsp;TourBerry
+            <img src="logo.png" alt="TourBerry — турагентство" style="height:44px;width:auto;">
         </a>
         <ul class="nav-links">
             <li><a href="#tours">Афиша</a></li>
@@ -437,6 +437,38 @@
         </div>
         <div class="slider-wrapper">
             <div class="slides" id="slides">
+
+                <!-- Шанхай -->
+                <div class="slide">
+                    <div class="slide-img" style="background-image:url('https://images.unsplash.com/photo-1548919973-5cef591cdbc9?w=1200&q=80')"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="slide-tag" style="background:#ff5500;">✈ С авиабилетами из Якутска</span>
+                        <div class="slide-destination">🇨🇳 Шанхай</div>
+                        <div class="slide-meta">24 июня — 30 июня &nbsp;|&nbsp; 6 дней</div>
+                        <div class="slide-desc">Небоскрёбы Пудуна, набережная Бунд, сады Юйюань и лучший шопинг в Азии — всё включено!</div>
+                        <div class="slide-footer">
+                            <div class="slide-price">120 000 ₽ <span>на человека</span></div>
+                            <button class="btn btn-primary" onclick="openOrderModal('🇨🇳 Шанхай — 24–30 июня (с авиабилетами из Якутска)')">Заказать программу</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Хуньчунь -->
+                <div class="slide">
+                    <div class="slide-img" style="background-image:url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1200&q=80')"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="slide-tag" style="background:#3dc9bd;color:#fff;">🌿 Приграничный тур</span>
+                        <div class="slide-destination">🇨🇳 Хуньчунь</div>
+                        <div class="slide-meta">13 июня — 17 июня &nbsp;|&nbsp; 5 дней</div>
+                        <div class="slide-desc">Шопинг, морепродукты, SPA и аутентичная китайская культура у границы — доступно и близко.</div>
+                        <div class="slide-footer">
+                            <div class="slide-price">44 000 ₽ <span>на человека</span></div>
+                            <button class="btn btn-primary" onclick="openOrderModal('🇨🇳 Хуньчунь — 13–17 июня')">Заказать программу</button>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Таиланд -->
                 <div class="slide">
@@ -563,6 +595,25 @@
         <h2>Почему клиенты выбирают именно нас?</h2>
         <p>Работаем с душой уже 7 лет</p>
     </div>
+
+    <!-- Director intro -->
+    <div style="max-width:1100px;margin:0 auto 3rem;padding:0 1.5rem;">
+        <div style="display:flex;align-items:flex-end;gap:2.5rem;background:linear-gradient(135deg,#0e2240 0%,#1a3560 100%);border-radius:var(--radius);overflow:hidden;min-height:260px;position:relative;">
+            <div style="padding:2.5rem 2rem 2.5rem 2.5rem;flex:1;z-index:2;">
+                <div style="display:inline-block;background:var(--orange);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .9rem;border-radius:50px;margin-bottom:1rem;">Директор Tourberry</div>
+                <h3 style="color:#fff;font-size:1.6rem;margin-bottom:.6rem;">Юлия Дорофеева</h3>
+                <p style="color:rgba(255,255,255,.75);font-size:.95rem;line-height:1.7;max-width:420px;">«За 7 лет в туризме я поняла главное: люди хотят не просто тур — они хотят воспоминания. Мы создаём их с любовью к каждой детали.»</p>
+                <div style="margin-top:1.25rem;display:flex;align-items:center;gap:.75rem;">
+                    <div style="width:36px;height:2px;background:var(--teal);"></div>
+                    <span style="color:var(--teal);font-size:.82rem;font-weight:600;letter-spacing:.05em;">7 лет в туризме</span>
+                </div>
+            </div>
+            <div style="flex-shrink:0;align-self:flex-end;line-height:0;max-width:260px;">
+                <img src="julia-dorofeeva.png" alt="Юлия Дорофеева — Директор Tourberry" style="width:100%;max-height:280px;object-fit:contain;object-position:bottom;display:block;">
+            </div>
+        </div>
+    </div>
+
     <div class="why-grid">
         <div class="why-card">
             <div class="why-icon">🎯</div>
@@ -599,10 +650,6 @@
         <p>Делимся вдохновением, новостями и горящими предложениями каждый день</p>
     </div>
     <div class="social-cards">
-        <a href="https://instagram.com/tourberry_" target="_blank" rel="noopener noreferrer" class="social-card instagram">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            <span>@tourberry_</span>
-        </a>
         <a href="https://t.me/tourberry" target="_blank" rel="noopener noreferrer" class="social-card telegram">
             <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
             <span>Telegram-канал</span>
@@ -752,7 +799,7 @@
 <footer>
     <div class="footer-inner">
         <div>
-            <div class="footer-logo"><span>✦</span> TourBerry</div>
+            <div class="footer-logo"><img src="logo.png" alt="TourBerry" style="height:48px;width:auto;filter:brightness(0) invert(1);"></div>
             <p class="footer-tagline">Создаём небольшие группы, продуманные туры, живое общение. Путешествуйте с нами.</p>
             <div class="footer-contact">
                 <a href="tel:+79679251431">+7 (967) 925-14-31</a>
@@ -772,7 +819,6 @@
         <div class="footer-col">
             <h4>Мы в сети</h4>
             <ul class="footer-links">
-                <li><a href="https://instagram.com/tourberry_" target="_blank" rel="noopener noreferrer">Instagram</a></li>
                 <li><a href="https://t.me/tourberry" target="_blank" rel="noopener noreferrer">Telegram-канал</a></li>
                 <li><a href="https://taplink.cc/tourberry" target="_blank" rel="noopener noreferrer">Taplink</a></li>
                 <li><a href="https://tourberry.agency">tourberry.agency</a></li>
