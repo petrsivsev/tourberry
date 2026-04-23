@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
     <link rel="manifest" href="favicon_io/site.webmanifest">
     <link rel="shortcut icon" href="favicon_io/favicon.ico">
+    <script src="tg.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -543,10 +544,20 @@
 
     function handleVisaForm(e) {
         e.preventDefault();
-        const btn = e.target.querySelector('button[type="submit"]');
+        var f = e.target;
+        var sel = f.querySelectorAll('select');
+        var inp = f.querySelectorAll('input');
+        var ta = f.querySelectorAll('textarea');
+        sendToTelegram('🛂 <b>Заявка — Оформление визы</b>\n' +
+            'Страна: ' + sel[0].value + '\n' +
+            'Имя: ' + inp[0].value + '\n' +
+            'Телефон: ' + inp[1].value + '\n' +
+            'Дата поездки: ' + (inp[2].value || 'не указана') + '\n' +
+            (ta[0].value ? 'Комментарий: ' + ta[0].value : ''));
+        var btn = f.querySelector('button[type="submit"]');
         btn.textContent = 'Отправка...';
         btn.disabled = true;
-        setTimeout(() => {
+        setTimeout(function() {
             btn.style.display = 'none';
             document.getElementById('visa-success').style.display = 'block';
         }, 700);

@@ -11,6 +11,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
     <link rel="manifest" href="favicon_io/site.webmanifest">
     <link rel="shortcut icon" href="favicon_io/favicon.ico">
+    <script src="tg.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -1031,19 +1032,51 @@
 
     function handleNewsletter(e) {
         e.preventDefault();
+        var email = document.querySelector('#newsletter-form input[type="email"]').value;
+        sendToTelegram('📧 <b>Подписка на рассылку</b>\nEmail: ' + email);
         document.getElementById('newsletter-form').style.display = 'none';
         document.getElementById('nl-success').style.display = 'block';
     }
     function handleContact(e) {
         e.preventDefault();
+        var name = document.getElementById('c-name').value;
+        var phone = document.getElementById('c-phone').value;
+        var email = document.getElementById('c-email').value;
+        var msg = document.getElementById('c-msg').value;
+        sendToTelegram('📩 <b>Заявка — Обратная связь</b>\n' +
+            'Имя: ' + name + '\n' +
+            'Телефон: ' + phone + '\n' +
+            (email ? 'Email: ' + email + '\n' : '') +
+            (msg ? 'Сообщение: ' + msg : ''));
         submitForm('contact-form', 'contact-success');
     }
     function handleTourForm(e) {
         e.preventDefault();
+        var f = document.getElementById('tour-form');
+        var sel = f.querySelectorAll('select');
+        var inp = f.querySelectorAll('input');
+        sendToTelegram('🌴 <b>Заявка — Подбор тура</b>\n' +
+            'Направление: ' + sel[0].value + '\n' +
+            'Дата: ' + (inp[0].value || 'не указана') + '\n' +
+            'Туристов: ' + sel[1].value + '\n' +
+            'Бюджет: ' + sel[2].value + '\n' +
+            'Имя: ' + inp[1].value + '\n' +
+            'Телефон: ' + inp[2].value);
         submitForm('tour-form', 'tour-success');
     }
     function handleOrderForm(e) {
         e.preventDefault();
+        var f = document.getElementById('order-form');
+        var inp = f.querySelectorAll('input');
+        var sel = f.querySelectorAll('select');
+        var ta = f.querySelectorAll('textarea');
+        var label = document.getElementById('order-tour-label');
+        sendToTelegram('🎫 <b>Заявка — Бронирование тура</b>\n' +
+            (label && label.textContent ? 'Тур: ' + label.textContent + '\n' : '') +
+            'Имя: ' + inp[0].value + '\n' +
+            'Телефон: ' + inp[1].value + '\n' +
+            'Туристов: ' + sel[0].value + '\n' +
+            (ta[0].value ? 'Пожелания: ' + ta[0].value : ''));
         submitForm('order-form', 'order-success');
     }
 
