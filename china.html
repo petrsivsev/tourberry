@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Туры в Китай — Tourberry | Якутск</title>
+    <meta name="description" content="Туры в Китай из Якутска от турагентства Tourberry. Харбин, Пекин, Шанхай, Хайнань. Лучшие цены, группы от 2 человек, помощь с визой.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* HERO */
+        .china-hero {
+            position: relative;
+            background: #1a0a04;
+            min-height: 88vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .china-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80');
+            background-size: cover;
+            background-position: center 40%;
+            opacity: .4;
+        }
+        .china-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(20,5,5,.88) 0%, rgba(20,5,5,.35) 100%);
+        }
+        .china-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 1.5rem 6rem;
+        }
+        .china-eyebrow {
+            display: inline-block;
+            color: #f0c040;
+            font-size: .8rem;
+            font-weight: 600;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+            border-left: 3px solid #f0c040;
+            padding-left: .75rem;
+        }
+        .china-hero-content h1 { color: #fff; max-width: 680px; margin-bottom: 1.25rem; font-style: italic; }
+        .china-hero-content p { color: rgba(255,255,255,.8); font-size: 1.05rem; max-width: 520px; margin-bottom: 2.5rem; line-height: 1.75; }
+
+        /* FACTS STRIP */
+        .facts-strip {
+            background: #c0001a;
+            padding: 1.5rem;
+        }
+        .facts-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 3rem;
+            justify-content: center;
+        }
+        .fact-item { display: flex; align-items: center; gap: .6rem; color: #fff; font-size: .9rem; font-weight: 500; }
+        .fact-item span.n { font-size: 1.4rem; font-weight: 800; font-family: 'Playfair Display', serif; }
+
+        /* DESTINATIONS */
+        .dest-section { padding: 5rem 1.5rem; background: var(--off-white); }
+        .dest-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+        .dest-card {
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: #fff;
+            transition: all .28s;
+        }
+        .dest-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+        .dest-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .dest-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: #c0001a;
+            color: #fff;
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            padding: .28rem .75rem;
+            border-radius: 50px;
+        }
+        .dest-body { padding: 1.5rem; }
+        .dest-body h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: .5rem;
+        }
+        .dest-body p { font-size: .88rem; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+        .dest-footer { display: flex; justify-content: space-between; align-items: center; }
+        .dest-price { font-size: 1.15rem; font-weight: 700; color: #c0001a; }
+        .dest-price small { font-size: .75rem; font-weight: 400; color: var(--muted); display: block; }
+
+        /* WHY CHINA */
+        .why-china { padding: 5rem 1.5rem; background: #fff; }
+        .why-china-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+        .wc-card {
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: box-shadow .3s, transform .3s;
+        }
+        .wc-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+        .wc-icon { font-size: 2rem; margin-bottom: .75rem; }
+        .wc-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: .98rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: .5rem;
+        }
+        .wc-card p { font-size: .88rem; color: var(--muted); line-height: 1.65; }
+
+        /* INCLUDED */
+        .included-section { padding: 5rem 1.5rem; background: var(--off-white); }
+        .included-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .incl-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 2rem;
+            border: 1px solid var(--border);
+        }
+        .incl-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            padding-bottom: .75rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .incl-card ul { list-style: none; padding: 0; }
+        .incl-card li {
+            font-size: .9rem;
+            color: #333;
+            padding: .45rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: .6rem;
+            line-height: 1.5;
+        }
+        .incl-card li:last-child { border-bottom: none; }
+        .incl-card.yes li::before { content: '✓'; color: #2e7d32; font-weight: 700; flex-shrink: 0; }
+        .incl-card.no li::before { content: '✗'; color: #c0001a; font-weight: 700; flex-shrink: 0; }
+
+        /* CTA */
+        .china-cta { padding: 5rem 1.5rem; background: #0e1a2a; position: relative; overflow: hidden; }
+        .china-cta::before {
+            content: '🇨🇳';
+            position: absolute;
+            font-size: 25rem;
+            opacity: .04;
+            top: 50%;
+            right: 5%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+        .china-cta-inner { max-width: 580px; margin: 0 auto; position: relative; z-index: 2; }
+        .china-cta .section-title h2 { color: #fff; }
+        .china-cta .section-title p { color: rgba(255,255,255,.65); }
+        .china-cta-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,.4);
+        }
+
+        @media (max-width: 768px) {
+            .included-inner { grid-template-columns: 1fr; }
+            .china-hero { min-height: 75vh; }
+            .china-hero-content { padding: 4rem 1.5rem 5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+    <div class="top-bar-inner">
+        <div class="top-bar-group">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <a href="tel:+79679251431">+7 (967) 925-14-31</a>
+        </div>
+        <div class="top-bar-group">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>БЦ Японский дом, ул. Дзержинского, 26/4, Якутск</span>
+        </div>
+        <div class="top-bar-group">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm.01 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+            <span>Пн–Пт 10:00–19:00 · Сб 11:00–17:00</span>
+        </div>
+    </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo"><span class="star">✦</span>&nbsp;TourBerry</a>
+        <ul class="nav-links">
+            <li><a href="index.html#tours">Афиша</a></li>
+            <li><a href="index.html#why-us">О нас</a></li>
+            <li><a href="index.html#reviews">Отзывы</a></li>
+            <li><a href="index.html#contact">Контакты</a></li>
+        </ul>
+        <div class="nav-cta">
+            <a href="tel:+79679251431" class="nav-phone">+7 (967) 925-14-31</a>
+            <button class="btn btn-primary" onclick="document.getElementById('china-form').scrollIntoView({behavior:'smooth'})">Забронировать тур</button>
+        </div>
+        <button class="hamburger" onclick="document.querySelector('.mobile-nav').classList.add('open')" aria-label="Меню">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<div class="mobile-nav">
+    <button class="close-btn" onclick="this.closest('.mobile-nav').classList.remove('open')">✕</button>
+    <a href="index.html">На главную</a>
+    <a href="visa.html">Оформление визы</a>
+    <a href="index.html#contact">Контакты</a>
+    <a href="tel:+79679251431" class="btn btn-primary">Позвонить</a>
+</div>
+
+<!-- HERO -->
+<section class="china-hero">
+    <div class="china-hero-bg"></div>
+    <div class="china-hero-overlay"></div>
+    <div class="china-hero-content">
+        <div class="china-eyebrow">🇨🇳 Китай · Tourberry · Якутск</div>
+        <h1>Откройте Китай<br>без барьеров</h1>
+        <p>Великая стена, Запретный город, харбинский ледяной фестиваль, ночные рынки и чайные церемонии. Подберём тур под любой бюджет и сроки.</p>
+        <div class="hero-btns">
+            <button class="btn btn-primary" onclick="document.getElementById('china-form').scrollIntoView({behavior:'smooth'})" style="font-size:1rem;padding:1rem 2.5rem;">
+                Забронировать тур →
+            </button>
+            <a href="visa.html" class="btn btn-outline">Оформить визу в Китай</a>
+        </div>
+    </div>
+</section>
+
+<!-- FACTS STRIP -->
+<div class="facts-strip">
+    <div class="facts-inner">
+        <div class="fact-item">
+            <span class="n">7</span>
+            <span>лет опыта<br>работы с Китаем</span>
+        </div>
+        <div class="fact-item">
+            <span class="n">500+</span>
+            <span>туристов<br>отправлено</span>
+        </div>
+        <div class="fact-item">
+            <span class="n">от 65 000 ₽</span>
+            <span>стоимость тура<br>на человека</span>
+        </div>
+        <div class="fact-item">
+            <span class="n">4 дня</span>
+            <span>оформление<br>китайской визы</span>
+        </div>
+    </div>
+</div>
+
+<!-- DESTINATIONS -->
+<section class="dest-section">
+    <div class="section-title">
+        <h2>Популярные направления</h2>
+        <p>Маршруты для каждого путешественника</p>
+    </div>
+    <div class="dest-grid">
+
+        <div class="dest-card">
+            <div class="dest-img" style="background-image:url('https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=80')">
+                <span class="dest-badge">🔥 Хит сезона</span>
+            </div>
+            <div class="dest-body">
+                <h3>Харбин — ледяной фестиваль</h3>
+                <p>Крупнейший в мире фестиваль ледяных скульптур, горнолыжные склоны и русский колорит старого города.</p>
+                <div class="dest-footer">
+                    <div class="dest-price">от 65 000 ₽ <small>на человека / 5 ночей</small></div>
+                    <button class="btn btn-primary" style="padding:.6rem 1.2rem;font-size:.82rem;" onclick="document.getElementById('china-form').scrollIntoView({behavior:'smooth'})">Забронировать</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="dest-card">
+            <div class="dest-img" style="background-image:url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80')">
+                <span class="dest-badge">⭐ Классика</span>
+            </div>
+            <div class="dest-body">
+                <h3>Пекин — Великая стена</h3>
+                <p>Запретный город, площадь Тяньаньмэнь, Великая Китайская стена, летний дворец Ихэюань.</p>
+                <div class="dest-footer">
+                    <div class="dest-price">от 70 000 ₽ <small>на человека / 6 ночей</small></div>
+                    <button class="btn btn-primary" style="padding:.6rem 1.2rem;font-size:.82rem;" onclick="document.getElementById('china-form').scrollIntoView({behavior:'smooth'})">Забронировать</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="dest-card">
+            <div class="dest-img" style="background-image:url('https://images.unsplash.com/photo-1548919973-5cef591cdbc9?w=800&q=80')">
+                <span class="dest-badge">🌃 Мегаполис</span>
+            </div>
+            <div class="dest-body">
+                <h3>Шанхай — мегаполис будущего</h3>
+                <p>Небоскрёбы Пудуна, набережная Бунд, традиционный квартал Юйюань и лучший шопинг в Азии.</p>
+                <div class="dest-footer">
+                    <div class="dest-price">от 75 000 ₽ <small>на человека / 6 ночей</small></div>
+                    <button class="btn btn-primary" style="padding:.6rem 1.2rem;font-size:.82rem;" onclick="document.getElementById('china-form').scrollIntoView({behavior:'smooth'})">Забронировать</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="dest-card">
+            <div class="dest-img" style="background-image:url('https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80')">
+                <span class="dest-badge">🏖 Пляжный</span>
+            </div>
+            <div class="dest-body">
+                <h3>Хайнань — китайские Мальдивы</h3>
+                <p>Тропический остров на юге Китая. Белые пляжи, кокосовые пальмы и тёплое море круглый год.</p>
+                <div class="dest-footer">
+                    <div class="dest-price">от 80 000 ₽ <small>на человека / 9 ночей</small></div>
+                    <button class="btn btn-primary" style="padding:.6rem 1.2rem;font-size:.82rem;" onclick="document.getElementById('china-form').scrollIntoView({behavior:'smooth'})">Забронировать</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- WHY CHINA WITH US -->
+<section class="why-china">
+    <div class="section-title">
+        <h2>Почему Китай с Tourberry?</h2>
+        <p>Мы специализируемся на Китае и знаем его лучше других</p>
+    </div>
+    <div class="why-china-grid">
+        <div class="wc-card">
+            <div class="wc-icon">🗺️</div>
+            <h3>Знаем страну изнутри</h3>
+            <p>Мы регулярно посещаем Китай, знаем лучшие отели, рестораны и скрытые от туристов места.</p>
+        </div>
+        <div class="wc-card">
+            <div class="wc-icon">🛂</div>
+            <h3>Помогаем с визой</h3>
+            <p>Оформляем китайскую визу за 4 рабочих дня. Берём на себя весь процесс — от сбора документов до подачи.</p>
+        </div>
+        <div class="wc-card">
+            <div class="wc-icon">🗣️</div>
+            <h3>Языковой барьер? Нет</h3>
+            <p>Наши гиды говорят по-русски и по-китайски. Вы ни разу не почувствуете себя потерянным.</p>
+        </div>
+        <div class="wc-card">
+            <div class="wc-icon">💵</div>
+            <h3>Честные цены</h3>
+            <p>Прямые договора с китайскими партнёрами — без посредников. Наши цены ниже, чем у агрегаторов.</p>
+        </div>
+        <div class="wc-card">
+            <div class="wc-icon">👥</div>
+            <h3>Небольшие группы</h3>
+            <p>Группы не более 12 человек — полное погружение в культуру, живое общение, никакой суеты.</p>
+        </div>
+        <div class="wc-card">
+            <div class="wc-icon">📱</div>
+            <h3>Поддержка 24/7</h3>
+            <p>Ваш личный travel-ассистент доступен в мессенджерах на протяжении всей поездки.</p>
+        </div>
+    </div>
+</section>
+
+<!-- INCLUDED/EXCLUDED -->
+<section class="included-section">
+    <div class="section-title">
+        <h2>Что входит в тур</h2>
+        <p>Прозрачное ценообразование — без скрытых доплат</p>
+    </div>
+    <div class="included-inner">
+        <div class="incl-card yes">
+            <h3>✅ Включено в стоимость</h3>
+            <ul>
+                <li>Авиаперелёт туда и обратно (из Якутска)</li>
+                <li>Размещение в выбранном отеле</li>
+                <li>Трансферы из аэропорта и в аэропорт</li>
+                <li>Сопровождение русскоязычным гидом</li>
+                <li>Входные билеты на объекты по программе</li>
+                <li>Туристическая страховка</li>
+                <li>Поддержка менеджера в WhatsApp / Telegram</li>
+            </ul>
+        </div>
+        <div class="incl-card no">
+            <h3>ℹ️ Оплачивается отдельно</h3>
+            <ul>
+                <li>Китайская туристическая виза</li>
+                <li>Питание (кроме завтрака в отеле)</li>
+                <li>Личные расходы и шопинг</li>
+                <li>Медицинская страховка расширенного покрытия</li>
+                <li>Дополнительные экскурсии не по программе</li>
+                <li>Чаевые гиду и водителю</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- CTA FORM -->
+<section class="china-cta" id="china-form">
+    <div class="china-cta-inner">
+        <div class="section-title">
+            <h2>Забронировать тур в Китай</h2>
+            <p>Оставьте заявку — менеджер свяжется с вами и предложит лучший вариант</p>
+        </div>
+        <div class="china-cta-card">
+            <form id="china-tour-form" onsubmit="handleChina(event)">
+                <div class="form-group">
+                    <label>Направление</label>
+                    <select required>
+                        <option value="">Выберите направление</option>
+                        <option>Харбин — ледяной фестиваль</option>
+                        <option>Пекин — Великая стена</option>
+                        <option>Шанхай</option>
+                        <option>Хайнань (пляжный отдых)</option>
+                        <option>Пекин + Шанхай (комбо)</option>
+                        <option>Другое / не определился</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Желаемые даты</label>
+                        <input type="date" id="china-date">
+                    </div>
+                    <div class="form-group">
+                        <label>Количество туристов</label>
+                        <select>
+                            <option>1 человек</option>
+                            <option selected>2 человека</option>
+                            <option>3 человека</option>
+                            <option>4+ человек</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Ваше имя</label>
+                        <input type="text" placeholder="Иван Иванов" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Телефон</label>
+                        <input type="tel" placeholder="+7 (___) ___-__-__" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Нужна ли виза в Китай?</label>
+                    <select>
+                        <option>Да, нужна помощь с визой</option>
+                        <option>Виза уже есть</option>
+                        <option>Не уверен, уточните</option>
+                    </select>
+                </div>
+                <p class="consent-note" style="margin-bottom:1rem;">
+                    Заполняя форму, вы даёте согласие на <a href="privacy.html">обработку персональных данных</a>
+                </p>
+                <button type="submit" class="btn btn-primary" style="width:100%;font-size:1rem;">
+                    Отправить заявку на тур 🇨🇳
+                </button>
+                <div class="success-msg" id="china-success">
+                    Заявка принята! Наш менеджер свяжется с вами в течение часа. ✓
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div>
+            <div class="footer-logo"><span>✦</span> TourBerry</div>
+            <p class="footer-tagline">Создаём небольшие группы, продуманные туры, живое общение. Путешествуйте с нами.</p>
+            <div class="footer-contact">
+                <a href="tel:+79679251431">+7 (967) 925-14-31</a>
+                <span>БЦ Японский дом, ул. Дзержинского, 26/4, Якутск</span>
+                <span>Пн–Пт: 10:00–19:00 / Сб: 11:00–17:00</span>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Разделы</h4>
+            <ul class="footer-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="visa.html">Оформление визы</a></li>
+                <li><a href="privacy.html">Политика конфиденциальности</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Мы в сети</h4>
+            <ul class="footer-links">
+                <li><a href="https://instagram.com/tourberry_" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                <li><a href="https://t.me/tourberry" target="_blank" rel="noopener noreferrer">Telegram-канал</a></li>
+                <li><a href="https://taplink.cc/tourberry" target="_blank" rel="noopener noreferrer">Taplink</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© 2024 Tourberry. Все права защищены.</span>
+        <a href="privacy.html" style="color:inherit;text-decoration:underline;">Политика конфиденциальности</a>
+    </div>
+</footer>
+
+<button class="scroll-top" id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Наверх">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+</button>
+
+<script>
+    const s = document.getElementById('scroll-top');
+    window.addEventListener('scroll', () => s.classList.toggle('visible', window.scrollY > 400), { passive: true });
+
+    function handleChina(e) {
+        e.preventDefault();
+        const btn = e.target.querySelector('button[type="submit"]');
+        btn.textContent = 'Отправка...';
+        btn.disabled = true;
+        setTimeout(() => {
+            btn.style.display = 'none';
+            document.getElementById('china-success').style.display = 'block';
+        }, 700);
+    }
+
+    const cd = document.getElementById('china-date');
+    if (cd) cd.min = new Date().toISOString().split('T')[0];
+</script>
+</body>
+</html>

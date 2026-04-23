@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформление визы — Tourberry | Якутск</title>
+    <meta name="description" content="Профессиональное оформление виз любой сложности от турагентства Tourberry в Якутске. Шенген, Китай, ОАЭ, США, Великобритания и другие страны.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* VISA HERO */
+        .visa-hero {
+            position: relative;
+            background: var(--navy);
+            padding: 6rem 1.5rem 5rem;
+            overflow: hidden;
+        }
+        .visa-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: .22;
+        }
+        .visa-hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 780px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .visa-hero-inner .eyebrow {
+            display: inline-block;
+            color: var(--gold-light);
+            font-size: .8rem;
+            font-weight: 600;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+            border: 1px solid rgba(232,168,32,.35);
+            padding: .3rem 1rem;
+            border-radius: 50px;
+        }
+        .visa-hero-inner h1 { color: #fff; margin-bottom: 1.25rem; font-style: italic; }
+        .visa-hero-inner p { color: rgba(255,255,255,.78); font-size: 1.05rem; line-height: 1.75; margin-bottom: 2.5rem; }
+        .visa-hero-inner .hero-btns { justify-content: center; }
+
+        /* COUNTRIES */
+        .countries-section { padding: 5rem 1.5rem; background: var(--off-white); }
+        .countries-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.25rem;
+        }
+        .country-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem 1.25rem;
+            text-align: center;
+            transition: all .25s;
+            cursor: default;
+        }
+        .country-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); }
+        .country-flag { font-size: 2.5rem; margin-bottom: .6rem; }
+        .country-name { font-weight: 700; font-size: .95rem; color: var(--navy); margin-bottom: .25rem; }
+        .country-type { font-size: .78rem; color: var(--muted); }
+
+        /* HOW IT WORKS */
+        .steps-section { padding: 5rem 1.5rem; background: #fff; }
+        .steps-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            position: relative;
+        }
+        .step-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+        .step-num {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            background: var(--navy);
+            color: #fff;
+            font-size: 1.25rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            font-family: 'Playfair Display', serif;
+        }
+        .step-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: .6rem;
+        }
+        .step-card p { font-size: .88rem; color: var(--muted); line-height: 1.65; }
+
+        /* DOCUMENTS */
+        .docs-section { padding: 5rem 1.5rem; background: var(--off-white); }
+        .docs-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .docs-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 2rem;
+            border: 1px solid var(--border);
+        }
+        .docs-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            padding-bottom: .75rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .docs-card ul { list-style: none; padding: 0; }
+        .docs-card li {
+            font-size: .9rem;
+            color: #333;
+            padding: .45rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: .6rem;
+            line-height: 1.5;
+        }
+        .docs-card li:last-child { border-bottom: none; }
+        .docs-card li::before { content: '✓'; color: var(--gold-btn); font-weight: 700; flex-shrink: 0; margin-top: .05rem; }
+
+        /* FAQ */
+        .faq-section { padding: 5rem 1.5rem; background: #fff; }
+        .faq-inner { max-width: 820px; margin: 0 auto; }
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        .faq-q {
+            padding: 1.25rem 1.5rem;
+            font-weight: 600;
+            font-size: .95rem;
+            color: var(--navy);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            user-select: none;
+            transition: background .2s;
+        }
+        .faq-q:hover { background: var(--off-white); }
+        .faq-q .chevron {
+            width: 20px; height: 20px;
+            flex-shrink: 0;
+            transition: transform .3s;
+            color: var(--gold-btn);
+        }
+        .faq-item.open .faq-q { background: var(--off-white); }
+        .faq-item.open .chevron { transform: rotate(180deg); }
+        .faq-a {
+            display: none;
+            padding: 0 1.5rem 1.25rem;
+            font-size: .9rem;
+            color: var(--muted);
+            line-height: 1.72;
+        }
+        .faq-item.open .faq-a { display: block; }
+
+        /* CTA FORM */
+        .visa-cta { padding: 5rem 1.5rem; background: var(--off-white); }
+        .visa-cta-inner { max-width: 580px; margin: 0 auto; }
+        .visa-cta-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        @media (max-width: 768px) {
+            .docs-inner { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+    <div class="top-bar-inner">
+        <div class="top-bar-group">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <a href="tel:+79679251431">+7 (967) 925-14-31</a>
+        </div>
+        <div class="top-bar-group">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>БЦ Японский дом, ул. Дзержинского, 26/4, Якутск</span>
+        </div>
+        <div class="top-bar-group">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm.01 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+            <span>Пн–Пт 10:00–19:00 · Сб 11:00–17:00</span>
+        </div>
+    </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo"><span class="star">✦</span>&nbsp;TourBerry</a>
+        <ul class="nav-links">
+            <li><a href="index.html#tours">Афиша</a></li>
+            <li><a href="index.html#why-us">О нас</a></li>
+            <li><a href="index.html#reviews">Отзывы</a></li>
+            <li><a href="index.html#contact">Контакты</a></li>
+        </ul>
+        <div class="nav-cta">
+            <a href="tel:+79679251431" class="nav-phone">+7 (967) 925-14-31</a>
+            <button class="btn btn-primary" onclick="document.getElementById('visa-form-section').scrollIntoView({behavior:'smooth'})">Заказать визу</button>
+        </div>
+        <button class="hamburger" onclick="document.querySelector('.mobile-nav').classList.add('open')" aria-label="Меню">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<div class="mobile-nav">
+    <button class="close-btn" onclick="this.closest('.mobile-nav').classList.remove('open')">✕</button>
+    <a href="index.html">На главную</a>
+    <a href="index.html#reviews">Отзывы</a>
+    <a href="index.html#contact">Контакты</a>
+    <a href="tel:+79679251431" class="btn btn-primary">Позвонить</a>
+</div>
+
+<!-- HERO -->
+<section class="visa-hero">
+    <div class="visa-hero-bg"></div>
+    <div class="visa-hero-inner">
+        <span class="eyebrow">Турагентство Tourberry · Якутск</span>
+        <h1>Оформление визы<br>без лишних хлопот</h1>
+        <p>Берём на себя весь процесс: от сбора документов до подачи в визовый центр. 7 лет опыта, высокий процент одобрения.</p>
+        <div class="hero-btns">
+            <button class="btn btn-primary" onclick="document.getElementById('visa-form-section').scrollIntoView({behavior:'smooth'})" style="font-size:1rem;padding:1rem 2.5rem;">
+                Оформить визу →
+            </button>
+            <a href="tel:+79679251431" class="btn btn-outline">Позвонить нам</a>
+        </div>
+    </div>
+</section>
+
+<!-- COUNTRIES -->
+<section class="countries-section">
+    <div class="section-title">
+        <h2>Страны, с которыми мы работаем</h2>
+        <p>Оформляем визы для большинства популярных направлений</p>
+    </div>
+    <div class="countries-grid">
+        <div class="country-card">
+            <div class="country-flag">🇨🇳</div>
+            <div class="country-name">Китай</div>
+            <div class="country-type">Туристическая / деловая</div>
+        </div>
+        <div class="country-card">
+            <div class="country-flag">🇪🇺</div>
+            <div class="country-name">Шенген</div>
+            <div class="country-type">Туристическая / краткосрочная</div>
+        </div>
+        <div class="country-card">
+            <div class="country-flag">🇬🇧</div>
+            <div class="country-name">Великобритания</div>
+            <div class="country-type">Туристическая / деловая</div>
+        </div>
+        <div class="country-card">
+            <div class="country-flag">🇺🇸</div>
+            <div class="country-name">США</div>
+            <div class="country-type">B1/B2, туристическая</div>
+        </div>
+        <div class="country-card">
+            <div class="country-flag">🇹🇭</div>
+            <div class="country-name">Таиланд</div>
+            <div class="country-type">Туристическая TR</div>
+        </div>
+        <div class="country-card">
+            <div class="country-flag">🇻🇳</div>
+            <div class="country-name">Вьетнам</div>
+            <div class="country-type">E-Visa, туристическая</div>
+        </div>
+        <div class="country-card">
+            <div class="country-flag">🇯🇵</div>
+            <div class="country-name">Япония</div>
+            <div class="country-type">Туристическая / культурная</div>
+        </div>
+        <div class="country-card">
+            <div class="country-flag">🌐</div>
+            <div class="country-name">Другие страны</div>
+            <div class="country-type">Уточните у менеджера</div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="steps-section">
+    <div class="section-title">
+        <h2>Как это работает</h2>
+        <p>Оформление визы с нами — просто и удобно</p>
+    </div>
+    <div class="steps-grid">
+        <div class="step-card">
+            <div class="step-num">1</div>
+            <h3>Оставьте заявку</h3>
+            <p>Заполните форму на сайте или позвоните нам. Менеджер свяжется с вами в течение часа.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-num">2</div>
+            <h3>Сбор документов</h3>
+            <p>Мы составим точный список документов для вашей ситуации и поможем с заполнением анкеты.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-num">3</div>
+            <h3>Подача заявления</h3>
+            <p>Передаёте нам документы — мы самостоятельно подаём их в визовый центр или консульство.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-num">4</div>
+            <h3>Получение визы</h3>
+            <p>Сообщаем об одобрении и передаём готовую визу. Вы готовы к путешествию!</p>
+        </div>
+    </div>
+</section>
+
+<!-- DOCUMENTS -->
+<section class="docs-section">
+    <div class="section-title">
+        <h2>Основные документы</h2>
+        <p>Базовый список для большинства туристических виз</p>
+    </div>
+    <div class="docs-inner">
+        <div class="docs-card">
+            <h3>📄 Обязательные документы</h3>
+            <ul>
+                <li>Заграничный паспорт (срок действия от 6 месяцев)</li>
+                <li>Копия внутреннего паспорта (все страницы)</li>
+                <li>Фото 3,5×4,5 на белом фоне (не старше 6 мес.)</li>
+                <li>Заполненная визовая анкета</li>
+                <li>Подтверждение бронирования отеля</li>
+                <li>Авиабилеты (туда и обратно)</li>
+                <li>Медицинская страховка (от 30 000 €)</li>
+            </ul>
+        </div>
+        <div class="docs-card">
+            <h3>💼 Дополнительные документы</h3>
+            <ul>
+                <li>Справка с места работы / выписка из ЕГРИП</li>
+                <li>Выписка с банковского счёта (за 3 месяца)</li>
+                <li>Свидетельство о браке / рождении детей</li>
+                <li>Спонсорское письмо (если расходы оплачивает третье лицо)</li>
+                <li>Предыдущие визы (при наличии)</li>
+                <li>Подтверждение цели поездки (для деловых виз)</li>
+            </ul>
+        </div>
+    </div>
+    <p style="text-align:center;margin-top:1.5rem;color:var(--muted);font-size:.88rem;">
+        * Точный список зависит от страны назначения. Уточните у нашего менеджера.
+    </p>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+    <div class="section-title">
+        <h2>Частые вопросы</h2>
+    </div>
+    <div class="faq-inner">
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                Сколько стоит оформление визы?
+                <svg class="chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+            </div>
+            <div class="faq-a">
+                Стоимость зависит от страны и типа визы. В неё входит наш сервисный сбор + визовый сбор консульства. Уточните актуальные цены у менеджера — мы всегда стараемся предложить оптимальный вариант.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                Как долго оформляется виза?
+                <svg class="chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+            </div>
+            <div class="faq-a">
+                Сроки варьируются: китайская виза — от 4 рабочих дней, шенгенская — от 5 до 15 рабочих дней. Всё зависит от конкретного консульства и загруженности визового центра. Рекомендуем подавать документы за 3–4 недели до поездки.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                Гарантируете ли вы выдачу визы?
+                <svg class="chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+            </div>
+            <div class="faq-a">
+                Решение о выдаче визы принимает консульство страны назначения. Мы не можем гарантировать 100% результат, однако наш опыт и знание требований позволяют существенно повысить шансы на одобрение. В случае отказа визовый сбор консульства не возвращается.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                Нужно ли приходить лично?
+                <svg class="chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+            </div>
+            <div class="faq-a">
+                Для большинства виз достаточно передать нам документы (лично или через курьера). Некоторые консульства требуют личного присутствия для сдачи биометрии — мы заранее предупредим, если это необходимо именно для вашей визы.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                Можно ли оформить визу срочно?
+                <svg class="chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+            </div>
+            <div class="faq-a">
+                Да, для ряда стран существует ускоренное рассмотрение (срочная виза). Это предполагает дополнительный сбор консульства. Уточните возможность срочного оформления у нашего менеджера.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="visa-cta" id="visa-form-section">
+    <div class="visa-cta-inner">
+        <div class="section-title">
+            <h2>Оформить визу</h2>
+            <p>Оставьте заявку — менеджер свяжется с вами и проконсультирует бесплатно</p>
+        </div>
+        <div class="visa-cta-card">
+            <form id="visa-form" onsubmit="handleVisaForm(event)">
+                <div class="form-group">
+                    <label>Страна назначения</label>
+                    <select required>
+                        <option value="">Выберите страну</option>
+                        <option>Китай</option>
+                        <option>Шенген (Европа)</option>
+                        <option>Великобритания</option>
+                        <option>США</option>
+                        <option>Таиланд</option>
+                        <option>Вьетнам</option>
+                        <option>Япония</option>
+                        <option>Другое</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Ваше имя</label>
+                        <input type="text" placeholder="Иван Иванов" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Телефон</label>
+                        <input type="tel" placeholder="+7 (___) ___-__-__" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Планируемая дата поездки</label>
+                    <input type="date" id="visa-date">
+                </div>
+                <div class="form-group">
+                    <label>Комментарий (необязательно)</label>
+                    <textarea placeholder="Количество человек, тип визы, особые пожелания..."></textarea>
+                </div>
+                <p class="consent-note" style="margin-bottom:1rem;">
+                    Заполняя форму, вы даёте согласие на <a href="privacy.html">обработку персональных данных</a>
+                </p>
+                <button type="submit" class="btn btn-primary" style="width:100%;font-size:1rem;">
+                    Отправить заявку на визу →
+                </button>
+                <div class="success-msg" id="visa-success">
+                    Заявка принята! Менеджер свяжется с вами в ближайшее время. ✓
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div>
+            <div class="footer-logo"><span>✦</span> TourBerry</div>
+            <p class="footer-tagline">Создаём небольшие группы, продуманные туры, живое общение. Путешествуйте с нами.</p>
+            <div class="footer-contact">
+                <a href="tel:+79679251431">+7 (967) 925-14-31</a>
+                <span>БЦ Японский дом, ул. Дзержинского, 26/4, Якутск</span>
+                <span>Пн–Пт: 10:00–19:00 / Сб: 11:00–17:00</span>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Разделы</h4>
+            <ul class="footer-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="china.html">Туры в Китай</a></li>
+                <li><a href="privacy.html">Политика конфиденциальности</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Мы в сети</h4>
+            <ul class="footer-links">
+                <li><a href="https://instagram.com/tourberry_" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                <li><a href="https://t.me/tourberry" target="_blank" rel="noopener noreferrer">Telegram-канал</a></li>
+                <li><a href="https://taplink.cc/tourberry" target="_blank" rel="noopener noreferrer">Taplink</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© 2024 Tourberry. Все права защищены.</span>
+        <a href="privacy.html" style="color:inherit;text-decoration:underline;">Политика конфиденциальности</a>
+    </div>
+</footer>
+
+<button class="scroll-top" id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Наверх">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+</button>
+
+<script>
+    const s = document.getElementById('scroll-top');
+    window.addEventListener('scroll', () => s.classList.toggle('visible', window.scrollY > 400), { passive: true });
+
+    function toggleFaq(el) {
+        el.closest('.faq-item').classList.toggle('open');
+    }
+
+    function handleVisaForm(e) {
+        e.preventDefault();
+        const btn = e.target.querySelector('button[type="submit"]');
+        btn.textContent = 'Отправка...';
+        btn.disabled = true;
+        setTimeout(() => {
+            btn.style.display = 'none';
+            document.getElementById('visa-success').style.display = 'block';
+        }, 700);
+    }
+
+    const vd = document.getElementById('visa-date');
+    if (vd) vd.min = new Date().toISOString().split('T')[0];
+</script>
+</body>
+</html>
