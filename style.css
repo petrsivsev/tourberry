@@ -13,25 +13,27 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ===== VARIABLES ===== */
 :root {
-    --navy: #0e2240;
-    --navy-mid: #1a3560;
-    --orange: #ff5500;
-    --orange-dark: #e04a00;
-    --teal: #3dc9bd;
-    --teal-dark: #2aada2;
+    --navy: #1A1A1A;
+    --navy-mid: #2B2B2B;
+    --orange: #FF5500;
+    --orange-light: #FF7733;
+    --orange-dark: #CC4400;
+    --teal: #3DC9BD;
+    --teal-light: #6DDDD4;
+    --teal-dark: #2EA89D;
     /* legacy aliases so existing code keeps working */
-    --gold: #e04a00;
-    --gold-light: #3dc9bd;
-    --gold-btn: #ff5500;
-    --off-white: #f8f6f2;
-    --light: #f0eed9;
-    --border: #ddd9d0;
-    --text: #1f1f1f;
-    --muted: #6b6b6b;
+    --gold: #CC4400;
+    --gold-light: #3DC9BD;
+    --gold-btn: #FF5500;
+    --off-white: #F5F5F5;
+    --light: #F5F5F5;
+    --border: #E0E0E0;
+    --text: #2B2B2B;
+    --muted: #6B6B6B;
     --white: #fff;
     --radius: 12px;
-    --shadow: 0 4px 24px rgba(14,34,64,.10);
-    --shadow-lg: 0 8px 40px rgba(14,34,64,.16);
+    --shadow: 0 4px 24px rgba(0,0,0,.10);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,.16);
 }
 
 /* ===== TYPOGRAPHY ===== */
@@ -94,7 +96,7 @@ h3 { font-size: clamp(1.1rem, 3vw, 1.5rem); }
     top: 0;
     z-index: 100;
     background: #fff;
-    box-shadow: 0 2px 12px rgba(14,34,64,.08);
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
 }
 .nav-inner {
     max-width: 1200px;
@@ -118,7 +120,8 @@ h3 { font-size: clamp(1.1rem, 3vw, 1.5rem); }
 .nav-logo .star { color: var(--gold-btn); }
 .nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a { font-size: .9rem; font-weight: 500; color: var(--text); transition: color .2s; }
-.nav-links a:hover { color: var(--gold-btn); }
+.nav-links a:hover { color: var(--orange); }
+.nav-links a.nav-active { color: var(--orange); font-weight: 600; }
 .nav-cta { display: flex; gap: 1rem; align-items: center; }
 .nav-phone { font-weight: 700; color: var(--navy); font-size: .95rem; white-space: nowrap; }
 .hamburger { display: none; flex-direction: column; gap: 5px; padding: 5px; cursor: pointer; }
@@ -194,7 +197,7 @@ h3 { font-size: clamp(1.1rem, 3vw, 1.5rem); }
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(14,34,64,.65);
+    background: rgba(0,0,0,.65);
     z-index: 500;
     align-items: center;
     justify-content: center;

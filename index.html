@@ -37,7 +37,7 @@
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(14,34,64,.88) 0%, rgba(14,34,64,.35) 100%);
+            background: linear-gradient(135deg, rgba(26,26,26,.88) 0%, rgba(26,26,26,.35) 100%);
         }
         .hero-content {
             position: relative;
@@ -45,6 +45,32 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 5rem 1.5rem 7rem;
+            display: flex;
+            align-items: flex-end;
+            gap: 3rem;
+        }
+        .hero-text { flex: 1; min-width: 0; }
+        .hero-photo {
+            flex-shrink: 0;
+            width: 320px;
+            align-self: flex-end;
+        }
+        .hero-photo img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 16px 16px 0 0;
+            display: block;
+        }
+        @media (max-width: 900px) {
+            .hero-photo { width: 260px; }
+            .hero-photo img { height: 400px; }
+        }
+        @media (max-width: 768px) {
+            .hero-content { flex-direction: column-reverse; align-items: stretch; gap: 2rem; padding-bottom: 5rem; }
+            .hero-photo { width: 100%; }
+            .hero-photo img { height: 320px; border-radius: 12px; object-position: top center; }
         }
         .hero-eyebrow {
             display: inline-block;
@@ -97,6 +123,57 @@
             100% { transform: scaleY(0); transform-origin: bottom; }
         }
 
+        /* ===== PROMO ===== */
+        #promo { padding: 5rem 1.5rem; background: #fff; }
+        .promo-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .promo-card {
+            background: var(--off-white);
+            border-radius: var(--radius);
+            padding: 2rem 1.75rem;
+            position: relative;
+            border: 2px solid transparent;
+            transition: box-shadow .25s, transform .25s;
+        }
+        .promo-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+        .promo-card.promo-urgent {
+            border-color: var(--orange);
+            background: #fff;
+        }
+        .promo-badge {
+            display: inline-block;
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding: .3rem .85rem;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+            background: var(--off-white);
+            color: var(--muted);
+            border: 1px solid var(--border);
+        }
+        .promo-urgent .promo-badge {
+            background: var(--orange);
+            color: #fff;
+            border-color: var(--orange);
+        }
+        .promo-icon { font-size: 2rem; margin-bottom: .75rem; }
+        .promo-card h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: .75rem; line-height: 1.4; }
+        .promo-card p { font-size: .9rem; color: var(--text); line-height: 1.65; margin-bottom: .75rem; }
+        .promo-fine { font-size: .75rem; color: var(--muted); line-height: 1.5; }
+        @media (max-width: 768px) {
+            .promo-grid { grid-template-columns: 1fr; }
+        }
+        @media (min-width: 769px) and (max-width: 960px) {
+            .promo-grid { grid-template-columns: 1fr 1fr; }
+        }
+
         /* ===== SLIDER ===== */
         #tours { padding: 5rem 0 4rem; background: var(--off-white); }
         .slider-container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
@@ -121,7 +198,7 @@
         .slide-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(14,34,64,.92) 0%, rgba(14,34,64,.25) 60%, transparent 100%);
+            background: linear-gradient(to top, rgba(26,26,26,.92) 0%, rgba(26,26,26,.25) 60%, transparent 100%);
         }
         .slide-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 2.5rem; color: #fff; }
         .slide-tag {
@@ -320,12 +397,49 @@
 
         /* ===== CONTACT ===== */
         #contact { padding: 5rem 1.5rem; background: var(--off-white); }
-        .contact-inner { max-width: 620px; margin: 0 auto; }
+        .contact-inner { max-width: 1100px; margin: 0 auto; }
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-top: 2.5rem;
+        }
+        .contact-person img {
+            width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: var(--radius);
+            display: block;
+            margin-bottom: 1.25rem;
+        }
+        .contact-person-info strong {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: .2rem;
+        }
+        .contact-person-info span {
+            display: block;
+            font-size: .85rem;
+            color: var(--orange);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .07em;
+            margin-bottom: .75rem;
+        }
+        .contact-person-info p { color: var(--muted); font-size: .95rem; line-height: 1.7; }
         .contact-form {
             background: #fff;
             padding: 2.5rem;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
+        }
+        @media (max-width: 768px) {
+            .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
+            .contact-person img { max-height: 280px; }
         }
 
         /* ===== MAP ===== */
@@ -364,6 +478,32 @@
             #hero { min-height: 80vh; }
             .hero-content { padding: 4rem 1.5rem 6rem; }
         }
+
+        /* ===== QUIZ ===== */
+        .quiz-progress { height: 4px; background: var(--border); border-radius: 2px; margin-bottom: .75rem; overflow: hidden; }
+        .quiz-progress-bar { height: 100%; background: var(--orange); border-radius: 2px; transition: width .35s ease; width: 20%; }
+        .quiz-step-label { font-size: .8rem; color: var(--muted); margin-bottom: 1.5rem; }
+        .quiz-title { color: var(--navy); margin-bottom: .5rem; font-size: 1.35rem; }
+        .quiz-subtitle { color: var(--muted); font-size: .9rem; margin-bottom: 1.25rem; line-height: 1.6; }
+        .quiz-options { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 1.5rem; }
+        .quiz-option {
+            padding: .6rem 1.1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: .9rem;
+            font-weight: 500;
+            color: var(--text);
+            background: #fff;
+            cursor: pointer;
+            transition: all .2s;
+        }
+        .quiz-option:hover { border-color: var(--orange); color: var(--orange); }
+        .quiz-option.selected { border-color: var(--orange); background: var(--orange); color: #fff; }
+        .quiz-nav { display: flex; justify-content: space-between; margin-top: 1rem; gap: 1rem; }
+        .quiz-nav .btn { min-width: 120px; }
+        .quiz-nav .btn-back { border: 2px solid var(--border); color: var(--muted); }
+        .quiz-nav .btn-back:hover { border-color: var(--navy); color: var(--navy); }
     </style>
 </head>
 <body>
@@ -393,14 +533,13 @@
             <img src="logo.png" alt="TourBerry — турагентство" style="height:44px;width:auto;">
         </a>
         <ul class="nav-links">
-            <li><a href="#tours">Афиша</a></li>
-            <li><a href="#why-us">О нас</a></li>
-            <li><a href="#reviews">Отзывы</a></li>
-            <li><a href="#contact">Контакты</a></li>
+            <li><a href="china.html">Туры в Китай</a></li>
+            <li><a href="visa.html">Оформление визы</a></li>
+            <li><a href="#promo">Акции</a></li>
         </ul>
         <div class="nav-cta">
             <a href="tel:+79679251431" class="nav-phone">+7 (967) 925-14-31</a>
-            <button class="btn btn-primary" onclick="openModal('tour-modal')">Подобрать тур</button>
+            <button class="btn btn-primary" onclick="openModal('quiz-modal')">Подобрать тур</button>
         </div>
         <button class="hamburger" onclick="document.querySelector('.mobile-nav').classList.add('open')" aria-label="Меню">
             <span></span><span></span><span></span>
@@ -411,10 +550,9 @@
 <!-- ===== MOBILE NAV ===== -->
 <div class="mobile-nav">
     <button class="close-btn" onclick="this.closest('.mobile-nav').classList.remove('open')" aria-label="Закрыть">✕</button>
-    <a href="#tours" onclick="this.closest('.mobile-nav').classList.remove('open')">Афиша</a>
-    <a href="#why-us" onclick="this.closest('.mobile-nav').classList.remove('open')">О нас</a>
-    <a href="#reviews" onclick="this.closest('.mobile-nav').classList.remove('open')">Отзывы</a>
-    <a href="#contact" onclick="this.closest('.mobile-nav').classList.remove('open')">Контакты</a>
+    <a href="china.html" onclick="this.closest('.mobile-nav').classList.remove('open')">Туры в Китай</a>
+    <a href="visa.html" onclick="this.closest('.mobile-nav').classList.remove('open')">Оформление визы</a>
+    <a href="#promo" onclick="this.closest('.mobile-nav').classList.remove('open')">Акции</a>
     <a href="tel:+79679251431" class="btn btn-primary">Позвонить</a>
 </div>
 
@@ -423,15 +561,58 @@
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-        <div class="hero-eyebrow">Якутск · Турагентство</div>
-        <h1 class="hero-title">Для тех, кто хочет видеть мир по-настоящему</h1>
-        <p class="hero-subtitle">Мы — команда единомышленников. Создаём небольшие группы, продуманные туры, живое общение.</p>
-        <div class="hero-btns">
-            <a href="#tours" class="btn btn-primary">Смотреть афишу</a>
-            <button class="btn btn-outline" onclick="openModal('tour-modal')">Подобрать тур онлайн</button>
+        <div class="hero-text">
+            <div class="hero-eyebrow">Якутск · Турагентство</div>
+            <h1 class="hero-title">Для тех, кто хочет видеть мир по-настоящему</h1>
+            <p class="hero-subtitle">Мы — команда единомышленников. Создаём небольшие группы, продуманные туры, живое общение.</p>
+            <div class="hero-btns">
+                <a href="#tours" class="btn btn-primary">Смотреть афишу</a>
+                <button class="btn btn-outline" onclick="openModal('quiz-modal')">Подобрать тур онлайн</button>
+            </div>
+        </div>
+        <div class="hero-photo">
+            <img src="julia-dorofeeva.png" alt="Юлия Дорофеева — директор Tourberry" loading="eager">
         </div>
     </div>
     <div class="hero-scroll" onclick="document.getElementById('tours').scrollIntoView({behavior:'smooth'})">Листай</div>
+</section>
+
+<!-- ===== PROMO ===== -->
+<section id="promo">
+    <div class="section-title">
+        <h2>Акции и спецпредложения</h2>
+        <p>Выгодные условия для наших туристов</p>
+    </div>
+    <div class="promo-grid">
+
+        <!-- Карточка 1: Мерч -->
+        <div class="promo-card">
+            <div class="promo-badge">Всегда</div>
+            <div class="promo-icon">🎒</div>
+            <h3>При покупке тура — фирменный тревел-набор в подарок!</h3>
+            <p>При покупке любого тура суммой от 200 000 рублей дарим красивый мерч в подарок.</p>
+            <p class="promo-fine">Акция и скидки не суммируется с другими. Подробности условия уточняйте у наших менеджеров.</p>
+        </div>
+
+        <!-- Карточка 2: Пенсионеры (срочная) -->
+        <div class="promo-card promo-urgent">
+            <div class="promo-badge">1–8 мая</div>
+            <div class="promo-icon">🎖️</div>
+            <h3>Скидка 5 000 ₽ для пенсионеров + брошка в подарок</h3>
+            <p>В рамках Дня Победы специальная акция пенсионерам — скидка 5 000 ₽. Сроки проведения: с 1 по 8 мая включительно. А также дарим красивую брошку в подарок.</p>
+            <p class="promo-fine">Акции и скидки не суммируется с другими. Подробности условия уточняйте у наших менеджеров.</p>
+        </div>
+
+        <!-- Карточка 3: eSIM -->
+        <div class="promo-card">
+            <div class="promo-badge">Азия</div>
+            <div class="promo-icon">📱</div>
+            <h3>Купи тур в Корею, Китай или Японию — и eSIM в подарок!</h3>
+            <p>Дарим всем нашим туристам при покупке тура в Корею, Китай, Японию на сумму от 50 000 рублей eSIM-карту. Виртуальная SIM-карта станет вашим помощником в путешествии!</p>
+            <p class="promo-fine">Акция не суммируется с другими. Подробности условия уточняйте у наших менеджеров.</p>
+        </div>
+
+    </div>
 </section>
 
 <!-- ===== TOURS SLIDER ===== -->
@@ -574,7 +755,7 @@
 <section id="find-tour">
     <h2>Подобрать тур онлайн</h2>
     <p>Расскажите о своих предпочтениях — и мы подберём идеальный вариант в течение часа</p>
-    <button class="btn btn-primary" onclick="openModal('tour-modal')" style="font-size:1rem;padding:1rem 2.75rem;">
+    <button class="btn btn-primary" onclick="openModal('quiz-modal')" style="font-size:1rem;padding:1rem 2.75rem;">
         Подобрать тур →
     </button>
 </section>
@@ -604,7 +785,7 @@
 
     <!-- Director intro -->
     <div style="max-width:1100px;margin:0 auto 3rem;padding:0 1.5rem;">
-        <div style="display:flex;align-items:flex-end;gap:2.5rem;background:linear-gradient(135deg,#0e2240 0%,#1a3560 100%);border-radius:var(--radius);overflow:hidden;min-height:260px;position:relative;">
+        <div style="display:flex;align-items:flex-end;gap:2.5rem;background:linear-gradient(135deg,#1A1A1A 0%,#2B2B2B 100%);border-radius:var(--radius);overflow:hidden;min-height:260px;position:relative;">
             <div style="padding:2.5rem 2rem 2.5rem 2.5rem;flex:1;z-index:2;">
                 <div style="display:inline-block;background:var(--orange);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .9rem;border-radius:50px;margin-bottom:1rem;">Директор Tourberry</div>
                 <h3 style="color:#fff;font-size:1.6rem;margin-bottom:.6rem;">Юлия Дорофеева</h3>
@@ -731,38 +912,48 @@
     <div class="contact-inner">
         <div class="section-title">
             <h2>Остались вопросы?</h2>
-            <p>Оставьте свои контактные данные, и мы свяжемся с вами</p>
+            <p>Оставьте контакт — перезвоним и всё расскажем</p>
         </div>
-        <div class="contact-form">
-            <form id="contact-form" onsubmit="handleContact(event)">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="c-name">Ваше имя</label>
-                        <input id="c-name" type="text" placeholder="Иван Иванов" required autocomplete="name">
+        <div class="contact-layout">
+            <div class="contact-person">
+                <img src="julia-dorofeeva.png" alt="Юлия Дорофеева — директор Tourberry">
+                <div class="contact-person-info">
+                    <strong>Юлия Дорофеева</strong>
+                    <span>Директор Tourberry</span>
+                    <p>Перезвоню лично или мои менеджеры ответят в ближайшее рабочее время. Подберём тур под ваш запрос и бюджет.</p>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form id="contact-form" onsubmit="handleContact(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="c-name">Ваше имя</label>
+                            <input id="c-name" type="text" placeholder="Иван Иванов" required autocomplete="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="c-phone">Телефон</label>
+                            <input id="c-phone" type="tel" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="c-phone">Телефон</label>
-                        <input id="c-phone" type="tel" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
+                        <label for="c-email">Email</label>
+                        <input id="c-email" type="email" placeholder="email@example.com" autocomplete="email">
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="c-email">Email</label>
-                    <input id="c-email" type="email" placeholder="email@example.com" autocomplete="email">
-                </div>
-                <div class="form-group">
-                    <label for="c-msg">Сообщение</label>
-                    <textarea id="c-msg" placeholder="Расскажите о своих пожеланиях..."></textarea>
-                </div>
-                <p class="consent-note" style="margin-bottom:1rem;">
-                    Заполняя форму, вы даёте согласие на <a href="privacy.html">обработку персональных данных</a>
-                </p>
-                <button type="submit" class="btn btn-navy" style="width:100%;">
-                    Отправить заявку
-                </button>
-                <div class="success-msg" id="contact-success">
-                    Спасибо! Мы свяжемся с вами в ближайшее время. ✓
-                </div>
-            </form>
+                    <div class="form-group">
+                        <label for="c-msg">Сообщение</label>
+                        <textarea id="c-msg" placeholder="Расскажите о своих пожеланиях..."></textarea>
+                    </div>
+                    <p class="consent-note" style="margin-bottom:1rem;">
+                        Заполняя форму, вы даёте согласие на <a href="privacy.html">обработку персональных данных</a>
+                    </p>
+                    <button type="submit" class="btn btn-navy" style="width:100%;">
+                        Отправить заявку
+                    </button>
+                    <div class="success-msg" id="contact-success">
+                        Спасибо! Мы свяжемся с вами в ближайшее время. ✓
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </section>
@@ -838,72 +1029,90 @@
 </footer>
 
 <!-- ===== TOUR MODAL ===== -->
-<div class="modal-backdrop" id="tour-modal" role="dialog" aria-modal="true" aria-labelledby="tour-modal-title">
+<div class="modal-backdrop" id="quiz-modal" role="dialog" aria-modal="true">
     <div class="modal">
-        <button class="modal-close" onclick="closeModal('tour-modal')" aria-label="Закрыть">✕</button>
-        <h3 id="tour-modal-title">Подобрать тур онлайн</h3>
-        <p>Заполните форму — мы подберём идеальный вариант в течение часа и свяжемся с вами</p>
-        <form id="tour-form" onsubmit="handleTourForm(event)">
-            <div class="form-group">
-                <label>Направление</label>
-                <select required>
-                    <option value="">Выберите направление</option>
-                    <option>Таиланд</option>
-                    <option>Китай</option>
-                    <option>ОАЭ</option>
-                    <option>Турция</option>
-                    <option>Грузия</option>
-                    <option>Вьетнам</option>
-                    <option>Мальдивы</option>
-                    <option>Европа</option>
-                    <option>Другое</option>
-                </select>
+        <button class="modal-close" onclick="closeModal('quiz-modal')" aria-label="Закрыть">✕</button>
+
+        <div class="quiz-progress"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
+        <div class="quiz-step-label" id="quiz-step-label">Шаг 1 из 5</div>
+
+        <!-- Шаг 1: Направления -->
+        <div class="quiz-step" id="quiz-step-1">
+            <h3 class="quiz-title">Куда хотите поехать?</h3>
+            <p class="quiz-subtitle">Можно выбрать несколько вариантов</p>
+            <div class="quiz-options" id="quiz-countries">
+                <button type="button" class="quiz-option" data-value="Китай">🇨🇳 Китай</button>
+                <button type="button" class="quiz-option" data-value="Корея">🇰🇷 Корея</button>
+                <button type="button" class="quiz-option" data-value="Япония">🇯🇵 Япония</button>
+                <button type="button" class="quiz-option" data-value="Таиланд">🇹🇭 Таиланд</button>
+                <button type="button" class="quiz-option" data-value="ОАЭ">🇦🇪 ОАЭ</button>
+                <button type="button" class="quiz-option" data-value="Турция">🇹🇷 Турция</button>
+                <button type="button" class="quiz-option" data-value="Грузия">🇬🇪 Грузия</button>
+                <button type="button" class="quiz-option" data-value="Другое">✈️ Другое</button>
             </div>
-            <div class="form-row">
+        </div>
+
+        <!-- Шаг 2: Туристы -->
+        <div class="quiz-step" id="quiz-step-2" style="display:none">
+            <h3 class="quiz-title">Сколько туристов?</h3>
+            <div class="quiz-options" id="quiz-tourists">
+                <button type="button" class="quiz-option" data-value="1">1</button>
+                <button type="button" class="quiz-option" data-value="2">2</button>
+                <button type="button" class="quiz-option" data-value="3–4">3–4</button>
+                <button type="button" class="quiz-option" data-value="5+">5+</button>
+            </div>
+        </div>
+
+        <!-- Шаг 3: Бюджет -->
+        <div class="quiz-step" id="quiz-step-3" style="display:none">
+            <h3 class="quiz-title">Бюджет на человека?</h3>
+            <div class="quiz-options" id="quiz-budget">
+                <button type="button" class="quiz-option" data-value="до 50 000 ₽">до 50 000 ₽</button>
+                <button type="button" class="quiz-option" data-value="50 000 – 100 000 ₽">50 000 – 100 000 ₽</button>
+                <button type="button" class="quiz-option" data-value="100 000 – 200 000 ₽">100 000 – 200 000 ₽</button>
+                <button type="button" class="quiz-option" data-value="от 200 000 ₽">от 200 000 ₽</button>
+            </div>
+        </div>
+
+        <!-- Шаг 4: Рассрочка -->
+        <div class="quiz-step" id="quiz-step-4" style="display:none">
+            <h3 class="quiz-title">Нужна рассрочка?</h3>
+            <div class="quiz-options" id="quiz-installment">
+                <button type="button" class="quiz-option" data-value="Да">Да, хочу рассрочку</button>
+                <button type="button" class="quiz-option" data-value="Нет">Нет, оплачу сразу</button>
+            </div>
+        </div>
+
+        <!-- Шаг 5: Контакт -->
+        <div class="quiz-step" id="quiz-step-5" style="display:none">
+            <h3 class="quiz-title">Оставьте контакт</h3>
+            <p class="quiz-subtitle">В ближайшее рабочее время менеджер перезвонит и проконсультирует вас по стоимости</p>
+            <form id="quiz-form" onsubmit="handleQuizForm(event)">
                 <div class="form-group">
-                    <label>Желаемая дата вылета</label>
-                    <input type="date" id="tour-date">
+                    <label for="quiz-name">Ваше имя</label>
+                    <input id="quiz-name" type="text" placeholder="Иван" required autocomplete="name">
                 </div>
                 <div class="form-group">
-                    <label>Количество туристов</label>
-                    <select>
-                        <option>1 человек</option>
-                        <option selected>2 человека</option>
-                        <option>3 человека</option>
-                        <option>4 человека</option>
-                        <option>5+ человек</option>
-                    </select>
+                    <label for="quiz-phone">Телефон</label>
+                    <input id="quiz-phone" type="tel" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
                 </div>
-            </div>
-            <div class="form-group">
-                <label>Бюджет на человека</label>
-                <select>
-                    <option>До 50 000 ₽</option>
-                    <option>50 000 – 100 000 ₽</option>
-                    <option>100 000 – 200 000 ₽</option>
-                    <option>Свыше 200 000 ₽</option>
-                </select>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Ваше имя</label>
-                    <input type="text" placeholder="Иван" required>
+                <p class="consent-note" style="margin-bottom:1rem;">
+                    Нажимая «Получить стоимость», вы даёте согласие на <a href="privacy.html">обработку персональных данных</a>
+                </p>
+                <button type="submit" class="btn btn-primary" style="width:100%;font-size:1rem;">
+                    Получить стоимость →
+                </button>
+                <div class="success-msg" id="quiz-success">
+                    Заявка принята! Менеджер перезвонит в ближайшее рабочее время. ✓
                 </div>
-                <div class="form-group">
-                    <label>Телефон</label>
-                    <input type="tel" placeholder="+7 (___) ___-__-__" required>
-                </div>
-            </div>
-            <p class="consent-note" style="margin-bottom:1rem;">
-                Нажимая «Найти тур», вы даёте согласие на <a href="privacy.html">обработку персональных данных</a>
-            </p>
-            <button type="submit" class="btn btn-primary" style="width:100%;font-size:1rem;">
-                Найти тур →
-            </button>
-            <div class="success-msg" id="tour-success">
-                Заявка принята! Наш менеджер свяжется с вами в течение часа. ✓
-            </div>
-        </form>
+            </form>
+        </div>
+
+        <!-- Навигация -->
+        <div class="quiz-nav" id="quiz-nav">
+            <button type="button" class="btn btn-back" id="quiz-back" onclick="quizBack()" style="display:none">← Назад</button>
+            <button type="button" class="btn btn-primary" id="quiz-next" onclick="quizNext()">Далее →</button>
+        </div>
     </div>
 </div>
 
@@ -996,6 +1205,7 @@
 
     /* ===== MODALS ===== */
     function openModal(id) {
+        if (id === 'quiz-modal') quizReset();
         document.getElementById(id).classList.add('open');
         document.body.style.overflow = 'hidden';
     }
@@ -1050,19 +1260,111 @@
             (msg ? 'Сообщение: ' + msg : ''));
         submitForm('contact-form', 'contact-success');
     }
-    function handleTourForm(e) {
+    /* ===== QUIZ LOGIC ===== */
+    var quizData = { countries: [], tourists: '', budget: '', installment: '' };
+    var quizCurrent = 1;
+    var quizTotal = 5;
+
+    function quizGoTo(step) {
+        document.getElementById('quiz-step-' + quizCurrent).style.display = 'none';
+        quizCurrent = step;
+        document.getElementById('quiz-step-' + quizCurrent).style.display = '';
+        document.getElementById('quiz-step-label').textContent = 'Шаг ' + quizCurrent + ' из ' + quizTotal;
+        document.getElementById('quiz-progress-bar').style.width = (quizCurrent / quizTotal * 100) + '%';
+        document.getElementById('quiz-back').style.display = quizCurrent > 1 ? '' : 'none';
+        var nextBtn = document.getElementById('quiz-next');
+        nextBtn.style.display = quizCurrent === quizTotal ? 'none' : '';
+        document.getElementById('quiz-nav').style.display = quizCurrent === quizTotal ? 'none' : '';
+    }
+
+    function quizNext() {
+        if (quizCurrent === 1 && quizData.countries.length === 0) {
+            alert('Пожалуйста, выберите хотя бы одно направление');
+            return;
+        }
+        if (quizCurrent < quizTotal) quizGoTo(quizCurrent + 1);
+    }
+
+    function quizBack() {
+        if (quizCurrent > 1) quizGoTo(quizCurrent - 1);
+    }
+
+    function quizReset() {
+        quizData = { countries: [], tourists: '', budget: '', installment: '' };
+        document.querySelectorAll('.quiz-option').forEach(function(o) { o.classList.remove('selected'); });
+        var form = document.getElementById('quiz-form');
+        if (form) form.reset();
+        document.getElementById('quiz-success').style.display = 'none';
+        var btn = document.querySelector('#quiz-form button[type="submit"]');
+        if (btn) { btn.style.display = ''; btn.textContent = 'Получить стоимость →'; btn.disabled = false; }
+        // show all steps correctly
+        for (var i = 1; i <= quizTotal; i++) {
+            var s = document.getElementById('quiz-step-' + i);
+            if (s) s.style.display = i === 1 ? '' : 'none';
+        }
+        quizCurrent = 1;
+        document.getElementById('quiz-step-label').textContent = 'Шаг 1 из ' + quizTotal;
+        document.getElementById('quiz-progress-bar').style.width = '20%';
+        document.getElementById('quiz-back').style.display = 'none';
+        document.getElementById('quiz-next').style.display = '';
+        document.getElementById('quiz-nav').style.display = '';
+    }
+
+    // Countries: multiselect
+    document.querySelectorAll('#quiz-countries .quiz-option').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            this.classList.toggle('selected');
+            var val = this.dataset.value;
+            var idx = quizData.countries.indexOf(val);
+            if (idx > -1) quizData.countries.splice(idx, 1);
+            else quizData.countries.push(val);
+        });
+    });
+    // Tourists: single select + auto-advance
+    document.querySelectorAll('#quiz-tourists .quiz-option').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('#quiz-tourists .quiz-option').forEach(function(o) { o.classList.remove('selected'); });
+            this.classList.add('selected');
+            quizData.tourists = this.dataset.value;
+            setTimeout(quizNext, 300);
+        });
+    });
+    // Budget: single select + auto-advance
+    document.querySelectorAll('#quiz-budget .quiz-option').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('#quiz-budget .quiz-option').forEach(function(o) { o.classList.remove('selected'); });
+            this.classList.add('selected');
+            quizData.budget = this.dataset.value;
+            setTimeout(quizNext, 300);
+        });
+    });
+    // Installment: single select + auto-advance
+    document.querySelectorAll('#quiz-installment .quiz-option').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('#quiz-installment .quiz-option').forEach(function(o) { o.classList.remove('selected'); });
+            this.classList.add('selected');
+            quizData.installment = this.dataset.value;
+            setTimeout(quizNext, 300);
+        });
+    });
+
+    function handleQuizForm(e) {
         e.preventDefault();
-        var f = document.getElementById('tour-form');
-        var sel = f.querySelectorAll('select');
-        var inp = f.querySelectorAll('input');
-        sendToTelegram('🌴 <b>Заявка — Подбор тура</b>\n' +
-            'Направление: ' + sel[0].value + '\n' +
-            'Дата: ' + (inp[0].value || 'не указана') + '\n' +
-            'Туристов: ' + sel[1].value + '\n' +
-            'Бюджет: ' + sel[2].value + '\n' +
-            'Имя: ' + inp[1].value + '\n' +
-            'Телефон: ' + inp[2].value);
-        submitForm('tour-form', 'tour-success');
+        var name = document.getElementById('quiz-name').value;
+        var phone = document.getElementById('quiz-phone').value;
+        sendToTelegram('🧩 <b>Квиз — Подбор тура с ценой</b>\n' +
+            'Направления: ' + (quizData.countries.join(', ') || 'не выбрано') + '\n' +
+            'Туристов: ' + (quizData.tourists || 'не указано') + '\n' +
+            'Бюджет/чел.: ' + (quizData.budget || 'не указан') + '\n' +
+            'Рассрочка: ' + (quizData.installment || 'не указано') + '\n' +
+            'Имя: ' + name + '\n' +
+            'Телефон: ' + phone);
+        var btn = document.querySelector('#quiz-form button[type="submit"]');
+        if (btn) { btn.textContent = 'Отправка...'; btn.disabled = true; }
+        setTimeout(function() {
+            if (btn) btn.style.display = 'none';
+            document.getElementById('quiz-success').style.display = 'block';
+        }, 700);
     }
     function handleOrderForm(e) {
         e.preventDefault();
@@ -1088,5 +1390,8 @@
     const dateInput = document.getElementById('tour-date');
     if (dateInput) dateInput.min = new Date().toISOString().split('T')[0];
 </script>
+
+<!-- ===== AI CHAT WIDGET ===== -->
+<script src="chat-widget.js" defer></script>
 </body>
 </html>
