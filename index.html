@@ -1253,25 +1253,39 @@
         }, delay);
     }
 
-    function handleNewsletter(e) {
+    async function handleNewsletter(e) {
         e.preventDefault();
+        var btn = document.querySelector('#newsletter-form button[type="submit"]');
+        if (btn) { btn.textContent = 'Отправка...'; btn.disabled = true; }
         var email = document.querySelector('#newsletter-form input[type="email"]').value;
-        sendToTelegram('📧 <b>Подписка на рассылку</b>\nEmail: ' + email);
-        document.getElementById('newsletter-form').style.display = 'none';
-        document.getElementById('nl-success').style.display = 'block';
+        try {
+            await sendToTelegram('📧 <b>Подписка на рассылку</b>\nEmail: ' + tgEscape(email));
+            document.getElementById('newsletter-form').style.display = 'none';
+            document.getElementById('nl-success').style.display = 'block';
+        } catch (error) {
+            if (btn) { btn.textContent = 'Подписаться'; btn.disabled = false; }
+            showTelegramError(error);
+        }
     }
-    function handleContact(e) {
+    async function handleContact(e) {
         e.preventDefault();
         var name = document.getElementById('c-name').value;
         var phone = document.getElementById('c-phone').value;
         var email = document.getElementById('c-email').value;
         var msg = document.getElementById('c-msg').value;
-        sendToTelegram('📩 <b>Заявка — Обратная связь</b>\n' +
-            'Имя: ' + name + '\n' +
-            'Телефон: ' + phone + '\n' +
-            (email ? 'Email: ' + email + '\n' : '') +
-            (msg ? 'Сообщение: ' + msg : ''));
-        submitForm('contact-form', 'contact-success');
+        var btn = document.querySelector('#contact-form button[type="submit"]');
+        if (btn) { btn.textContent = 'Отправка...'; btn.disabled = true; }
+        try {
+            await sendToTelegram('📩 <b>Заявка — Обратная связь</b>\n' +
+                'Имя: ' + tgEscape(name) + '\n' +
+                'Телефон: ' + tgEscape(phone) + '\n' +
+                (email ? 'Email: ' + tgEscape(email) + '\n' : '') +
+                (msg ? 'Сообщение: ' + tgEscape(msg) : ''));
+            submitForm('contact-form', 'contact-success');
+        } catch (error) {
+            if (btn) { btn.textContent = 'Отправить заявку'; btn.disabled = false; }
+            showTelegramError(error);
+        }
     }
     /* ===== QUIZ LOGIC ===== */
     var quizData = { countries: [], tourists: '', budget: '', installment: '' };
@@ -1361,38 +1375,50 @@
         });
     });
 
-    function handleQuizForm(e) {
+    async function handleQuizForm(e) {
         e.preventDefault();
         var name = document.getElementById('quiz-name').value;
         var phone = document.getElementById('quiz-phone').value;
-        sendToTelegram('🧩 <b>Квиз — Подбор тура с ценой</b>\n' +
-            'Направления: ' + (quizData.countries.join(', ') || 'не выбрано') + '\n' +
-            'Туристов: ' + (quizData.tourists || 'не указано') + '\n' +
-            'Бюджет/чел.: ' + (quizData.budget || 'не указан') + '\n' +
-            'Рассрочка: ' + (quizData.installment || 'не указано') + '\n' +
-            'Имя: ' + name + '\n' +
-            'Телефон: ' + phone);
         var btn = document.querySelector('#quiz-form button[type="submit"]');
         if (btn) { btn.textContent = 'Отправка...'; btn.disabled = true; }
-        setTimeout(function() {
-            if (btn) btn.style.display = 'none';
-            document.getElementById('quiz-success').style.display = 'block';
-        }, 700);
+        try {
+            await sendToTelegram('🧩 <b>Квиз — Подбор тура с ценой</b>\n' +
+                'Направления: ' + tgEscape(quizData.countries.join(', ') || 'не выбрано') + '\n' +
+                'Туристов: ' + tgEscape(quizData.tourists || 'не указано') + '\n' +
+                'Бюджет/чел.: ' + tgEscape(quizData.budget || 'не указан') + '\n' +
+                'Рассрочка: ' + tgEscape(quizData.installment || 'не указано') + '\n' +
+                'Имя: ' + tgEscape(name) + '\n' +
+                'Телефон: ' + tgEscape(phone));
+            setTimeout(function() {
+                if (btn) btn.style.display = 'none';
+                document.getElementById('quiz-success').style.display = 'block';
+            }, 700);
+        } catch (error) {
+            if (btn) { btn.textContent = 'Получить стоимость →'; btn.disabled = false; }
+            showTelegramError(error);
+        }
     }
-    function handleOrderForm(e) {
+    async function handleOrderForm(e) {
         e.preventDefault();
         var f = document.getElementById('order-form');
         var inp = f.querySelectorAll('input');
         var sel = f.querySelectorAll('select');
         var ta = f.querySelectorAll('textarea');
         var label = document.getElementById('order-tour-label');
-        sendToTelegram('🎫 <b>Заявка — Бронирование тура</b>\n' +
-            (label && label.textContent ? 'Тур: ' + label.textContent + '\n' : '') +
-            'Имя: ' + inp[0].value + '\n' +
-            'Телефон: ' + inp[1].value + '\n' +
-            'Туристов: ' + sel[0].value + '\n' +
-            (ta[0].value ? 'Пожелания: ' + ta[0].value : ''));
-        submitForm('order-form', 'order-success');
+        var btn = f.querySelector('button[type="submit"]');
+        if (btn) { btn.textContent = 'Отправка...'; btn.disabled = true; }
+        try {
+            await sendToTelegram('🎫 <b>Заявка — Бронирование тура</b>\n' +
+                (label && label.textContent ? 'Тур: ' + tgEscape(label.textContent) + '\n' : '') +
+                'Имя: ' + tgEscape(inp[0].value) + '\n' +
+                'Телефон: ' + tgEscape(inp[1].value) + '\n' +
+                'Туристов: ' + tgEscape(sel[0].value) + '\n' +
+                (ta[0].value ? 'Пожелания: ' + tgEscape(ta[0].value) : ''));
+            submitForm('order-form', 'order-success');
+        } catch (error) {
+            if (btn) { btn.textContent = 'Отправить заявку'; btn.disabled = false; }
+            showTelegramError(error);
+        }
     }
 
     /* ===== SCROLL TOP ===== */

@@ -554,25 +554,31 @@
         el.closest('.faq-item').classList.toggle('open');
     }
 
-    function handleVisaForm(e) {
+    async function handleVisaForm(e) {
         e.preventDefault();
         var f = e.target;
         var sel = f.querySelectorAll('select');
         var inp = f.querySelectorAll('input');
         var ta = f.querySelectorAll('textarea');
-        sendToTelegram('🛂 <b>Заявка — Оформление визы</b>\n' +
-            'Страна: ' + sel[0].value + '\n' +
-            'Имя: ' + inp[0].value + '\n' +
-            'Телефон: ' + inp[1].value + '\n' +
-            'Дата поездки: ' + (inp[2].value || 'не указана') + '\n' +
-            (ta[0].value ? 'Комментарий: ' + ta[0].value : ''));
         var btn = f.querySelector('button[type="submit"]');
         btn.textContent = 'Отправка...';
         btn.disabled = true;
-        setTimeout(function() {
-            btn.style.display = 'none';
-            document.getElementById('visa-success').style.display = 'block';
-        }, 700);
+        try {
+            await sendToTelegram('🛂 <b>Заявка — Оформление визы</b>\n' +
+                'Страна: ' + tgEscape(sel[0].value) + '\n' +
+                'Имя: ' + tgEscape(inp[0].value) + '\n' +
+                'Телефон: ' + tgEscape(inp[1].value) + '\n' +
+                'Дата поездки: ' + tgEscape(inp[2].value || 'не указана') + '\n' +
+                (ta[0].value ? 'Комментарий: ' + tgEscape(ta[0].value) : ''));
+            setTimeout(function() {
+                btn.style.display = 'none';
+                document.getElementById('visa-success').style.display = 'block';
+            }, 700);
+        } catch (error) {
+            btn.textContent = 'Отправить заявку на визу →';
+            btn.disabled = false;
+            showTelegramError(error);
+        }
     }
 
     const vd = document.getElementById('visa-date');

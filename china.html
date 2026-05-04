@@ -568,25 +568,31 @@
     const s = document.getElementById('scroll-top');
     window.addEventListener('scroll', () => s.classList.toggle('visible', window.scrollY > 400), { passive: true });
 
-    function handleChina(e) {
+    async function handleChina(e) {
         e.preventDefault();
         var f = e.target;
         var sel = f.querySelectorAll('select');
         var inp = f.querySelectorAll('input');
-        sendToTelegram('🇨🇳 <b>Заявка — Тур в Китай</b>\n' +
-            'Направление: ' + sel[0].value + '\n' +
-            'Дата: ' + (inp[0].value || 'не указана') + '\n' +
-            'Туристов: ' + sel[1].value + '\n' +
-            'Имя: ' + inp[1].value + '\n' +
-            'Телефон: ' + inp[2].value + '\n' +
-            'Виза: ' + sel[2].value);
         var btn = f.querySelector('button[type="submit"]');
         btn.textContent = 'Отправка...';
         btn.disabled = true;
-        setTimeout(function() {
-            btn.style.display = 'none';
-            document.getElementById('china-success').style.display = 'block';
-        }, 700);
+        try {
+            await sendToTelegram('🇨🇳 <b>Заявка — Тур в Китай</b>\n' +
+                'Направление: ' + tgEscape(sel[0].value) + '\n' +
+                'Дата: ' + tgEscape(inp[0].value || 'не указана') + '\n' +
+                'Туристов: ' + tgEscape(sel[1].value) + '\n' +
+                'Имя: ' + tgEscape(inp[1].value) + '\n' +
+                'Телефон: ' + tgEscape(inp[2].value) + '\n' +
+                'Виза: ' + tgEscape(sel[2].value));
+            setTimeout(function() {
+                btn.style.display = 'none';
+                document.getElementById('china-success').style.display = 'block';
+            }, 700);
+        } catch (error) {
+            btn.textContent = 'Отправить заявку на тур 🇨🇳';
+            btn.disabled = false;
+            showTelegramError(error);
+        }
     }
 
     const cd = document.getElementById('china-date');
